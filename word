@@ -1,0 +1,139 @@
+
+Proyecto: Sistema de Control de Inventario – Gym Santander
+ 1. Descripción del negocio
+El Gym Santander es un gimnasio de tamaño pequeño ubicado en una zona urbana, orientado a personas que buscan mejorar su condición física y salud. El establecimiento ofrece servicios básicos como entrenamiento con pesas, asesoría básica y venta de suplementos deportivos.
+El gimnasio cuenta con un área de recepción donde se venden productos como proteínas, creatinas y pre-entrenos. Actualmente, el control de estos productos se realiza de forma manual o con registros poco estructurados, lo que genera desorden y errores.
+
+ 2. Problemática identificada
+Tras una visita al gimnasio y entrevistas con el encargado, se identificaron los siguientes problemas:
+•	No existe un sistema automatizado para el control de inventario.
+•	El stock de productos se actualiza manualmente, lo que genera errores frecuentes.
+•	No hay control claro de entradas (compras) ni salidas (ventas).
+•	Se presentan pérdidas de productos o inconsistencias en el inventario.
+•	No se tiene registro detallado de proveedores.
+•	Dificultad para saber qué productos están por agotarse.
+•	Falta de reportes para la toma de decisiones.
+
+3. Datos obtenidos (simulación de entrevista)
+Durante la visita se obtuvo la siguiente información:
+•	El encargado mencionó: “A veces creemos que hay productos, pero ya se vendieron y no se anotaron”.
+•	Se detectó que el control se lleva en cuadernos y ocasionalmente en Excel.
+•	No existe historial organizado de compras.
+•	Se han perdido ventas por no saber que el producto estaba agotado.
+•	Se compran productos sin un control de rotación o demanda.
+
+ 4. Objetivos del sistema
+Objetivo general:
+Desarrollar un sistema de control de inventario que permita gestionar eficientemente los productos del Gym Santander.
+Objetivos específicos:
+•	Registrar productos y sus características.
+•	Controlar entradas (compras) y salidas (ventas).
+•	Mantener actualizado el stock automáticamente.
+•	Registrar proveedores.
+•	Facilitar consultas rápidas del inventario.
+•	Reducir errores humanos en el control.
+
+5. Requerimientos funcionales
+El sistema debe permitir:
+1.	Registrar, editar y eliminar productos.
+2.	Registrar proveedores.
+3.	Registrar entradas de productos (compras).
+4.	Registrar salidas de productos (ventas).
+5.	Actualizar automáticamente el stock.
+6.	Consultar el inventario actual.
+7.	Mostrar historial de entradas y salidas.
+8.	Buscar productos por nombre, tipo o marca.
+9.	Validar que no se vendan productos sin stock suficiente.
+
+6. Requerimientos no funcionales
+1.	El sistema debe ser fácil de usar (interfaz intuitiva).
+2.	Debe tener buen rendimiento en consultas.
+3.	Seguridad básica (evitar datos inválidos).
+4.	Disponibilidad para uso diario.
+5.	Escalabilidad para agregar más productos.
+6.	Integridad de datos (uso de claves primarias y foráneas).
+7.	Compatibilidad con MySQL.
+
+
+8. Requisitos del sistema (técnico)
+
+Base de datos:
+•	MySQL .
+•	Tablas:
+o	productos
+o	proveedores
+o	entradas
+o	salidas
+Funcionalidades técnicas:
+•	CRUD completo.
+•	Validación de datos.
+•	Automatización de stock 
+•	Consultas SQL optimizadas.
+
+ Conclusión
+El sistema que estoy desarrollando resuelve una problemática real del Gym Santander: la falta de control en inventario. Con pequeñas mejoras (automatización y validaciones), puedes convertirlo en un sistema sólido, profesional y listo para implementación real.
+
+DIAGRAMA MER Y ER DEL SISTEMA
+ 
+
+
+
+
+
+
+
+
+
+ESTRUCTURA DE LA BASE DE DATOS:
+ Creación de la base de datos
+En esta parte del desarrollo procedí a crear la base de datos que será utilizada para almacenar toda la información del sistema de inventario del gimnasio.
+Primero, ejecuté la instru CREATE DATABASE inventario_gym, con la finalidad de generar un espacio estructurado donde se guardarán los datos relacionados a productos, proveedores, entradas y salidas del sistema.
+Además, configuré el conjunto de caracteres utf8mb4 y la colación utf8mb4_unicode_ci. Esto permite que la base de datos soporte correctamente caracteres especiales, como tildes (á, é, í, ó, ú), la letra ñ y otros símbolos, evitando problemas de codificación en el almacenamiento y consulta de datos.
+Posteriormente, utilicé la instrucción USE inventario_gym para seleccionar la base de datos creada y comenzar a trabajar sobre ella, lo que me permite ejecutar las siguientes sentencias SQL dentro de este entorno.
+
+
+
+
+ 
+
+Creación de la tabla productos
+En esta sección procedí a crear la tabla productos, la cual tiene como finalidad almacenar toda la información relacionada a los suplementos disponibles en el inventario del gimnasio.
+Para ello, definí el campo id_producto como clave primaria con incremento automático (AUTO_INCREMENT), lo que permite identificar de manera única cada producto registrado en el sistema.
+Asimismo, incluí los campos nombre, marca y tipo, todos de tipo VARCHAR y con restricción NOT NULL, asegurando que cada producto cuente obligatoriamente con información básica descriptiva, evitando registros incompletos.
+También agregué los campos precio_compra y precio_venta, utilizando el tipo de dato DECIMAL(10,2), lo cual permite almacenar valores monetarios con precisión, fundamentales para el control de costos y ganancias.
+Finalmente, definí el campo stock como un valor entero (INT) con un valor por defecto de 0, permitiendo llevar el control de la cantidad disponible de cada producto en el inventario.
+La tabla fue creada utilizando el motor de almacenamiento InnoDB, ya que este permite el uso de claves foráneas y garantiza la integridad referencial de los datos dentro del sistema.
+ 
+
+
+ Creación de la tabla proveedores
+En esta sección procedí a crear la tabla proveedores, la cual tiene como finalidad almacenar la información de las empresas o personas que suministran los productos al gimnasio.
+Para su estructura, definí el campo id_proveedor como clave primaria con incremento automático (AUTO_INCREMENT), lo que permite identificar de manera única a cada proveedor dentro del sistema.
+Asimismo, incluí el campo nombre, de tipo VARCHAR(100) con la restricción NOT NULL, asegurando que cada proveedor registrado tenga obligatoriamente un nombre.
+También se agregaron los campos telefono y direccion, los cuales permiten registrar información de contacto del proveedor. Estos campos no son obligatorios, pero resultan útiles para la comunicación y gestión de compras.
+Finalmente, la tabla fue creada utilizando el motor de almacenamiento InnoDB, lo cual permite mantener la integridad de los datos y facilita la relación con otras tablas mediante claves foráneas.
+ 
+
+ Creación de la tabla entradas (compras)
+En esta sección procedí a crear la tabla entradas, la cual tiene como finalidad registrar todas las compras o ingresos de productos al inventario del gimnasio.
+Para su estructura, definí el campo id_entrada como clave primaria con incremento automático (AUTO_INCREMENT), permitiendo identificar de manera única cada registro de entrada.
+Asimismo, incluí los campos id_producto e id_proveedor, ambos de tipo entero y con la restricción NOT NULL, ya que cada entrada debe estar obligatoriamente asociada a un producto específico y a un proveedor determinado.
+También agregué el campo cantidad, que permite registrar el número de unidades ingresadas al inventario, y el campo fecha, que almacena la fecha en la que se realizó la compra.
+Para garantizar la integridad de los datos, establecí claves foráneas (FOREIGN KEY). La relación con la tabla productos se definió mediante la restricción fk_entrada_producto, la cual permite que, si un producto es eliminado, sus registros asociados en entradas también se eliminen automáticamente (ON DELETE CASCADE). Además, cualquier actualización en el identificador del producto se reflejará en esta tabla (ON UPDATE CASCADE).
+Por otro lado, la relación con la tabla proveedores se estableció mediante la restricción fk_entrada_proveedor, donde se restringe la eliminación de un proveedor si tiene registros asociados (ON DELETE RESTRICT), evitando la pérdida de información importante. Asimismo, se permite la actualización en cascada (ON UPDATE CASCADE).
+Finalmente, la tabla fue creada utilizando el motor de almacenamiento InnoDB, lo cual permite gestionar correctamente las relaciones entre tablas y mantener la integridad referencial del sistema.
+ 
+
+Creación de la tabla salidas (ventas)
+En esta sección procedí a crear la tabla salidas, la cual tiene como finalidad registrar todas las ventas o salidas de productos del inventario del gimnasio.
+Para su estructura, definí el campo id_salida como clave primaria con incremento automático (AUTO_INCREMENT), lo que permite identificar de manera única cada transacción de salida registrada en el sistema.
+Asimismo, incluí el campo id_producto, de tipo entero y con la restricción NOT NULL, ya que cada venta debe estar asociada obligatoriamente a un producto específico del inventario.
+También se agregó el campo cantidad, que permite registrar el número de unidades vendidas, y el campo fecha, que almacena la fecha en la que se realizó la venta.
+Para mantener la integridad de los datos, establecí una clave foránea (FOREIGN KEY) mediante la restricción fk_salida_producto, la cual relaciona esta tabla con la tabla productos. Esta relación permite que, si un producto es eliminado, sus registros asociados en la tabla salidas también se eliminen automáticamente (ON DELETE CASCADE). Asimismo, cualquier actualización en el identificador del producto se reflejará en esta tabla (ON UPDATE CASCADE).
+Finalmente, la tabla fue creada utilizando el motor de almacenamiento InnoDB, lo cual garantiza el manejo adecuado de las relaciones entre tablas y asegura la integridad referencial dentro del sistema.
+ 
+
+
+
+
+
