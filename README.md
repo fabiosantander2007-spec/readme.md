@@ -48,6 +48,12 @@ El sistema debe permitir:
 * JavaScript
 * MySQL
 
+
+DIAGRAMA MER:
+
+<img width="824" height="477" alt="image" src="https://github.com/user-attachments/assets/757cd9e0-6b7a-4b57-9bf1-5e0fdcf82851" />
+<img width="413" height="426" alt="image" src="https://github.com/user-attachments/assets/0d0b409c-0ce1-49b6-93b3-3dda4352eef5" />
+
 ## Autor
 
 Fabio Santander
