@@ -2,6 +2,36 @@
 
 Este proyecto permite gestionar productos, compras y ventas en un gimnasio.
 
+ 1. Descripción del negocio
+El Gym Santander es un gimnasio de tamaño pequeño ubicado en una zona urbana, orientado a personas que buscan mejorar su condición física y salud. El establecimiento ofrece servicios básicos como entrenamiento con pesas, asesoría básica y venta de suplementos deportivos.
+El gimnasio cuenta con un área de recepción donde se venden productos como proteínas, creatinas y pre-entrenos. Actualmente, el control de estos productos se realiza de forma manual o con registros poco estructurados, lo que genera desorden y errores.
+
+2. Problemática identificada
+Tras una visita al gimnasio y entrevistas con el encargado, se identificaron los siguientes problemas:
+•	No existe un sistema automatizado para el control de inventario.
+•	El stock de productos se actualiza manualmente, lo que genera errores frecuentes.
+•	No hay control claro de entradas (compras) ni salidas (ventas).
+•	Se presentan pérdidas de productos o inconsistencias en el inventario.
+•	No se tiene registro detallado de proveedores.
+•	Dificultad para saber qué productos están por agotarse.
+•	Falta de reportes para la toma de decisiones.
+
+
+.# Requerimientos funcionales#
+El sistema debe permitir:
+1.	Registrar, editar y eliminar productos.
+2.	Registrar proveedores.
+3.	Registrar entradas de productos (compras).
+4.	Registrar salidas de productos (ventas).
+5.	Actualizar automáticamente el stock.
+6.	Consultar el inventario actual.
+7.	Mostrar historial de entradas y salidas.
+8.	Buscar productos por nombre, tipo o marca.
+9.	Validar que no se vendan productos sin stock suficiente.
+
+
+
+
 # Funcionalidades
 - Registro de productos
 - Control de stock
@@ -13,6 +43,7 @@ Este proyecto permite gestionar productos, compras y ventas en un gimnasio.
 - CSS
 - JavaScript
 - MySQL
+  #dia
 
 # Autor
 Fabio Santander
