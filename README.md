@@ -153,6 +153,63 @@ INSERT INTO entradas (id_producto, id_proveedor, cantidad, precio_compra, fecha)
 INSERT INTO salidas (id_producto, cantidad, total, fecha) VALUES
 (1, 2, 240.00, '2026-03-26'),
 (2, 1, 90.00, '2026-03-26');
+
+
+ Ejecución de la Base de Datos – Inventario Gym
+
+ Requisitos
+
+* XAMPP (MySQL activo)
+* MySQL Workbench 
+* Script SQL del proyecto
+
+
+
+Pasos de ejecución
+
+1. Iniciar XAMPP y activar MySQL
+2. Abrir MySQL Workbench o phpMyAdmin
+3. Ejecutar el script completo:
+
+   * Crea la base de datos inventario_gym
+   * Genera las tablas: productos, proveedores, entradas, salidas
+   * Inserta datos de prueba
+
+
+
+ Estructura del sistema
+
+* productos: almacena los artículos del gimnasio
+* proveedores: registra los proveedores
+* entradas: controla compras (ingreso de stock)
+*salidas: registra ventas
+
+Las tablas están relacionadas mediante claves foráneas, lo que garantiza integridad y consistencia de los datos.
+
+
+
+Funcionamiento
+
+* Las entradas aumentan el stock
+* Las salidas representan ventas
+* Se emplea InnoDBpara soportar relaciones y restricciones:
+
+  * CASCADE: elimina datos relacionados automáticamente
+  * RESTRICT: evita eliminar datos en uso
+
+
+ Resultado
+
+Al ejecutar el script:
+
+* La base de datos queda lista para uso
+* Incluye datos iniciales para pruebas
+* Permite realizar consultas y gestionar inventario
+
+
+
+
+
 ## Autor
 
 Fabio Santander
