@@ -54,6 +54,105 @@ DIAGRAMA MER:
 <img width="824" height="477" alt="image" src="https://github.com/user-attachments/assets/757cd9e0-6b7a-4b57-9bf1-5e0fdcf82851" />
 <img width="413" height="426" alt="image" src="https://github.com/user-attachments/assets/0d0b409c-0ce1-49b6-93b3-3dda4352eef5" />
 
+BASE DE DATOS:
+
+CREATE DATABASE IF NOT EXISTS inventario_gym
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+USE inventario_gym;
+
+
+-- TABLA: productos
+
+
+CREATE TABLE IF NOT EXISTS productos (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    marca VARCHAR(100) NOT NULL,
+    tipo VARCHAR(50) NOT NULL,
+    precio_venta DECIMAL(10,2) NOT NULL,
+    stock INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB;
+
+-- ============================================
+-- TABLA: proveedores
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS proveedores (
+    id_proveedor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    direccion VARCHAR(150)
+) ENGINE=InnoDB;
+
+-- ============================================
+-- TABLA: entradas (compras)
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS entradas (
+    id_entrada INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT NOT NULL,
+    id_proveedor INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_compra DECIMAL(10,2) NOT NULL,
+    fecha DATE NOT NULL,
+
+    CONSTRAINT fk_entrada_producto
+      FOREIGN KEY (id_producto)
+      REFERENCES productos(id_producto)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+
+    CONSTRAINT fk_entrada_proveedor
+      FOREIGN KEY (id_proveedor)
+      REFERENCES proveedores(id_proveedor)
+      ON DELETE RESTRICT
+      ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- ============================================
+-- TABLA: salidas (ventas)
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS salidas (
+    id_salida INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    fecha DATE NOT NULL,
+
+    CONSTRAINT fk_salida_producto
+      FOREIGN KEY (id_producto)
+      REFERENCES productos(id_producto)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- ============================================
+-- EJEMPLOS DE INSERCIÓN
+-- ============================================
+
+-- Productos
+INSERT INTO productos (nombre, marca, tipo, precio_venta, stock) VALUES
+('Proteína Whey', 'GymShark', 'Suplemento', 120.00, 20),
+('Creatina', 'Optimum', 'Suplemento', 90.00, 10),
+('Guantes Gym', 'Nike', 'Accesorio', 60.00, 15);
+
+-- Proveedores
+INSERT INTO proveedores (nombre, telefono, direccion) VALUES
+('Proveedor 1', '987654321', 'Av. Lima 123'),
+('Proveedor 2', '912345678', 'Av. Arequipa 456');
+
+-- Entradas (compras)
+INSERT INTO entradas (id_producto, id_proveedor, cantidad, precio_compra, fecha) VALUES
+(1, 1, 10, 100.00, '2026-03-20'),
+(2, 2, 20, 70.00, '2026-03-21');
+
+-- Salidas (ventas)
+INSERT INTO salidas (id_producto, cantidad, total, fecha) VALUES
+(1, 2, 240.00, '2026-03-26'),
+(2, 1, 90.00, '2026-03-26');
 ## Autor
 
 Fabio Santander
