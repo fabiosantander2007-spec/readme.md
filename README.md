@@ -1,6 +1,7 @@
 # Sistema de Inventario Gym
 TRELLO:
-![Uploading image.png…]()
+<img width="1223" height="535" alt="image" src="https://github.com/user-attachments/assets/3ecb0add-4da4-442d-aa2c-66f38f6e6e2d" />
+LINK:https://trello.com/b/zxgoYAv5/mi-tablero-de-trello
 
 Este proyecto permite gestionar productos, compras y ventas en un gimnasio.
 
