@@ -211,6 +211,8 @@ Al ejecutar el script:
 
 
 
+FIGMA:
+<img width="1349" height="600" alt="image" src="https://github.com/user-attachments/assets/3be67654-f296-47dd-878d-d076394d3187" />
 
 
 ## Autor
