@@ -1,4 +1,6 @@
 # Sistema de Inventario Gym
+TRELLO:
+![Uploading image.png…]()
 
 Este proyecto permite gestionar productos, compras y ventas en un gimnasio.
 
